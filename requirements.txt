@@ -1,0 +1,30 @@
+ipython<6.0.0
+ipdb
+# PyBrasil
+#
+#    pybrasil
+#
+# PySPED
+#
+signxml
+#git+git://github.com/odoo-brazil/geraldo.git@master#geraldo
+#pysped
+#
+# PyBoleto
+#
+#pyboleto
+#
+# py3o (relatórios em LibreOffice)
+#
+sh
+py3o.template
+py3o.formats
+#
+# Validação de email nas telas da localização
+#
+email_validator==1.0.3
+#
+# Tratamento de conteúdo html para texto em relatórios
+#
+html2text
+
