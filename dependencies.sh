@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt install python3-dev
-vitualenv . --python=python3
+virtualenv . --python=python3
 mkdir -p parts
 cd parts
 git clone git@github.com:kmee/ocb.git --branch=11.0 odoo
