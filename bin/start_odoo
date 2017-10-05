@@ -1,4 +1,0 @@
-#!/bin/bash 
-
-parts/odoo/./odoo-bin -c etc/odoo.cfg
-
