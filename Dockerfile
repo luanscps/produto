@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:16.04
 MAINTAINER KMEE <dev@kmee.com.br>
 ENV ODOO_VERSION 11.0
 #
