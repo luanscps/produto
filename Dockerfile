@@ -1,17 +1,18 @@
 FROM ubuntu:16.04
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 MAINTAINER KMEE <dev@kmee.com.br>
 ENV ODOO_VERSION 11.0
 #
 # Copia todos os aquivos necessários
 #
-COPY ["deploy/docker-dependencies.sh", "deploy/create-odoo-user.sh", "/root/"]
+COPY ["deploy/", "./"]
 #########################################################
 # 1- Instala as dependencias
 # 2- Cria o usuario Odoo e suas configurações
 #########################################################
-RUN sh /root/docker-dependencies.sh
+RUN sh install-dependencies.sh
 # Cria o usuario odoo e as configuraçoes do bashrc
-RUN sh /root/create-odoo-user.sh
+RUN sh create-odoo-user.sh
 # Instala o Buildout
 WORKDIR /opt/odoo/
 USER odoo
@@ -37,3 +38,15 @@ RUN ./bin/buildout -c cache.cfg
 #
 WORKDIR /opt/odoo
 RUN rm -rf /tmp/workspace/
+
+##########################################################
+#
+#  4. Executa um buildot do produto
+#
+##########################################################
+
+COPY ["buildout/", "/opt/odoo"]
+
+RUN sh create-virtualenv.sh
+USER root
+RUN ./bin/buildout -c mileo.cfg
