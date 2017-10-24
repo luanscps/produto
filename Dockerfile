@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 MAINTAINER KMEE <dev@kmee.com.br>
 ENV ODOO_VERSION 11.0
 #
@@ -45,8 +44,12 @@ RUN rm -rf /tmp/workspace/
 #
 ##########################################################
 
+# Configure timezone and locale
+ENV LANG pt_BR.UTF-8
+ENV LANGUAGE pt_BR:pt:en
+ENV LC_ALL pt_BR.UTF-8
+
 COPY ["buildout/", "/opt/odoo"]
 
-RUN sh create-virtualenv.sh
-USER root
-RUN ./bin/buildout -c mileo.cfg
+RUN ./create-virtualenv.sh
+RUN bin/buildout -c base-produto.cfg
