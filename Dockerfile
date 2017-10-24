@@ -53,3 +53,7 @@ COPY ["buildout/", "/opt/odoo"]
 
 RUN ./create-virtualenv.sh
 RUN bin/buildout -c base-produto.cfg
+
+ENTRYPOINT ["./deploy/entrypoint.sh"]
+CMD ["odoo"]
+
