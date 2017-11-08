@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e -x
-virtualenv -p python3 .
-bin/pip install -U zc.buildout==2.8.0 pip
-bin/buildout -c buildout/base-produto.cfg
+virtualenv -p python3 --no-setuptools --no-pip .
+bin/python <(curl https://bootstrap.pypa.io/get-pip.py) --upgrade setuptools==33.1.1 pip zc.buildout
 
